@@ -9,4 +9,5 @@ export class Album {
     url?: string;
     tags?: Array<string>;
     like?: string;
+    note: Array<number>;
 }

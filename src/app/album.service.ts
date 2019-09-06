@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ShufflePipe } from './shuffle.pipe'
+import { MoyennePipe } from './moyenne.pipe';
 
 import { Album } from "./album";
 import { List } from "./list";
@@ -21,7 +22,7 @@ export class AlbumService {
 
   sendCurrentNumberPage = new Subject<number>();
 
-  constructor(private shuffleData: ShufflePipe) { }
+  constructor(private shuffleData: ShufflePipe, private moyenneData: MoyennePipe) { }
 
   getAlbums(order: Order = (a,b) => (a.duration - b.duration)): Album[] {
     return this.albums.sort(order);
@@ -64,5 +65,9 @@ export class AlbumService {
 
   currentPage(page: number) {
     return this.sendCurrentNumberPage.next(page);
+  }
+
+  getMoyenne(id: string): number {
+    return this.moyenneData.transform(this.getAlbum(id).note);
   }
 }

@@ -12,6 +12,8 @@ import { AlbumDescriptionComponent } from './album-description/album-description
 import { LoginComponent } from './login/login.component';
 import { ShufflePipe } from './shuffle.pipe';
 import { PaginateComponent } from './paginate/paginate.component';
+import { StatsComponent } from './stats/stats.component';
+import { MoyennePipe } from './moyenne.pipe';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { PaginateComponent } from './paginate/paginate.component';
     AlbumDescriptionComponent,
     LoginComponent,
     ShufflePipe,
-    PaginateComponent
+    PaginateComponent,
+    StatsComponent,
+    MoyennePipe
   ],
   imports: [
     BrowserModule,
@@ -30,7 +34,7 @@ import { PaginateComponent } from './paginate/paginate.component';
     FormsModule,
     BrowserAnimationsModule
   ],
-  providers: [ShufflePipe],
+  providers: [ShufflePipe, MoyennePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

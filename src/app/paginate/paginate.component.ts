@@ -16,10 +16,17 @@ export class PaginateComponent implements OnInit {
 
   @Output() paginate: EventEmitter<{start: number, end: number}> = new EventEmitter();
 
+  currentPageSubscription;
+
   constructor(private albumS: AlbumService) {
-    this.albumS.sendCurrentNumberPage.subscribe(page => {
-      this.currentPage = page;
-    });
+
+    this.currentPageSubscription = this.albumS.sendCurrentNumberPage;
+    this.currentPageSubscription.subscribe(
+      page => {
+        this.currentPage = page; 
+      }
+    );
+
   }
 
   ngOnInit() {
@@ -50,6 +57,13 @@ export class PaginateComponent implements OnInit {
     this.albumS.currentPage(this.currentPage);
     const start = (this.currentPage - 1) * this.albumPerPage;
     this.paginate.emit({start: start, end: start + this.albumPerPage});
+  }
+
+  // component est retiré du DOM
+  ngOnDestroy(){
+    console.log('destroy...');
+
+    // this.currentPageSubscription.unsubscribe();
   }
 
 }

@@ -4,6 +4,7 @@ import { Routes, RouterModule } from'@angular/router'; // module des routes et c
 import { AlbumsComponent } from './albums/albums.component';
 import { AlbumDescriptionComponent } from './album-description/album-description.component';
 import { LoginComponent } from './login/login.component';
+import { StatsComponent } from './stats/stats.component';
 
 const albumsRoutes: Routes = [
   {
@@ -21,6 +22,10 @@ const albumsRoutes: Routes = [
   },{
     path:'album/:id',
     component: AlbumDescriptionComponent
+  },
+  {
+    path:'stats',
+    component: StatsComponent
   },
 ];
 

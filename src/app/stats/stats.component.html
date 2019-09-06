@@ -1,0 +1,22 @@
+<div class="row content">
+    <h1>{{ titlePage }}</h1>
+    <div class="col-sm-4 video">
+        <app-album-details [album]="selectedAlbum" (onPlay)="playParent($event)"></app-album-details>
+    </div><!-- .video -->
+    <div class="col-sm-8 music">
+        <app-paginate (paginate)="paginate($event)"></app-paginate>
+        <button type="button" class="btn btn-lg btn-primary" (click)="croissant()">Croissant</button>
+        <button type="button" class="btn btn-lg btn-primary" (click)="decroissant($event)">Decroissant</button>
+
+        <div class="card" *ngFor="let album of albums; let index = index">
+            <div class="card-header">
+                {{ album.id }} - {{ album.ref }} <span *ngIf="album.status=='on'">[play]</span>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title"><a routerLink="/album/{{ album.id }}">{{ album.title }}</a></h5>
+                <p class="card-text">Moyenne : {{ album.note | moyenne }}</p>
+            </div>
+        </div><!-- .card -->
+        <app-paginate (paginate)="paginate($event)"></app-paginate>
+    </div><!-- .music -->
+</div>
