@@ -50,4 +50,10 @@ export class StatsComponent implements OnInit {
     this.albums = this.albumS.paginate($event.start, $event.end, this.filtre);
   }
 
+  nbSongs(albumId: string): number {
+    if (this.albumS.getAlbumList(albumId)) {
+      return this.albumS.getAlbumList(albumId).list.length;
+    } else return 0;
+  }
+
 }

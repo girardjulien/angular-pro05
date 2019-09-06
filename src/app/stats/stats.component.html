@@ -4,7 +4,7 @@
         <app-album-details [album]="selectedAlbum" (onPlay)="playParent($event)"></app-album-details>
     </div><!-- .video -->
     <div class="col-sm-8 music">
-        <app-paginate (paginate)="paginate($event)" [aPerPage]="4"></app-paginate>
+        <app-paginate (paginate)="paginate($event)" [aPerPage]="albumPerPage"></app-paginate>
         <button type="button" class="btn btn-lg btn-primary" (click)="croissant()">Croissant</button>
         <button type="button" class="btn btn-lg btn-primary" (click)="decroissant()">Decroissant</button>
 
@@ -15,8 +15,9 @@
             <div class="card-body">
                 <h5 class="card-title"><a routerLink="/album/{{ album.id }}">{{ album.title }}</a></h5>
                 <p class="card-text">Moyenne : {{ album.note | moyenne }}</p>
+                <p class="card-text">Nombre de chansons : {{ nbSongs(album.id) }}</p>
             </div>
         </div><!-- .card -->
-        <app-paginate (paginate)="paginate($event)" [aPerPage]="4"></app-paginate>
+        <app-paginate (paginate)="paginate($event)" [aPerPage]="albumPerPage"></app-paginate>
     </div><!-- .music -->
 </div>
