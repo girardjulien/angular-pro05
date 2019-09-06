@@ -6,7 +6,7 @@
         <app-album-details [album]="selectedAlbum" (onPlay)="playParent($event)"></app-album-details>
     </div><!-- .video -->
     <div class="col-sm-8 music">
-        <app-paginate (paginate)="paginate($event)"></app-paginate>
+        <app-paginate (paginate)="paginate($event)" [aPerPage]="3"></app-paginate>
         <button type="button" class="btn btn-lg btn-danger">You are in an anonymous mode.</button>
 
         <div class="card" *ngFor="let album of albums; let index = index">
@@ -33,6 +33,6 @@
             </div>
             <button class="btn btn-dark" (click)="onSelect(album)">Details</button>
         </div><!-- .card -->
-        <app-paginate (paginate)="paginate($event)"></app-paginate>
+        <app-paginate (paginate)="paginate($event)" [aPerPage]="3"></app-paginate>
     </div><!-- .music -->
 </div>

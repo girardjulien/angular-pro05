@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 import { AlbumService } from '../album.service';
 
@@ -15,6 +15,7 @@ export class PaginateComponent implements OnInit {
   currentPage: number = 1;
 
   @Output() paginate: EventEmitter<{start: number, end: number}> = new EventEmitter();
+  @Input() aPerPage: number;
 
   currentPageSubscription;
 
@@ -30,7 +31,7 @@ export class PaginateComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.numberPages = Math.ceil(this.albumS.countAlbums() / this.albumPerPage);
+    this.numberPages = Math.ceil(this.albumS.countAlbums() / this.aPerPage);
     this.pages = [... Array(this.numberPages).keys()];
   }
 
@@ -55,8 +56,8 @@ export class PaginateComponent implements OnInit {
 
   calculStartEnd() {
     this.albumS.currentPage(this.currentPage);
-    const start = (this.currentPage - 1) * this.albumPerPage;
-    this.paginate.emit({start: start, end: start + this.albumPerPage});
+    const start = (this.currentPage - 1) * this.aPerPage;
+    this.paginate.emit({start: start, end: start + this.aPerPage});
   }
 
   // component est retiré du DOM

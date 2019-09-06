@@ -51,6 +51,10 @@ export class AlbumService {
     return this.albums.sort(order).slice(start, end);
   }
 
+  paginateStats(start: number, end: number, order: Order = this.defaultOrder): Album[] {
+    return this.albums.slice(start, end).sort(order);
+  }
+
   search(word: string): Album[] {
     return this.albums.filter(album =>  album.title.includes(word));
   }
