@@ -1,0 +1,13 @@
+<div class="card" *ngIf="hideAlbum==false">
+    <img class="card-img-top" src="#" alt="Group Music">
+    <div class="card-body">
+        <h5 class="card-title">{{ album.title }}</h5>
+        <p class="card-text">{{ album.name }}</p>
+        <button class="btn btn-danger" (click)="hide()">Hide </button>
+        <button class="btn btn-primary" (click)="play(album)">Play >> </button>
+        <button class="btn btn-success" (click)="shuffle()">Shuffle </button>
+    </div>
+    <ul *ngIf="songs" class="list-group">
+        <li *ngFor="let song of songs" class="list-group-item">{{ song }}</li>
+    </ul>
+</div>
